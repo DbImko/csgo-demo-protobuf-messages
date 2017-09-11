@@ -9,6 +9,7 @@ buildscript {
 
 plugins {
     id "java"
+    id "maven-publish"
     id "com.jfrog.bintray" version "1.7.3"
 }
 apply plugin: "com.google.protobuf"
@@ -49,8 +50,6 @@ publishing {
     publications {
         maven(MavenPublication) {
             from(components.java)
-            artifact(sourcesJar)
-            artifact(javadocJar)
         }
     }
 }
