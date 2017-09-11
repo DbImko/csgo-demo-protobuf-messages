@@ -1,0 +1,49 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath "com.google.protobuf:protobuf-gradle-plugin:0.8.3"
+    }
+}
+
+plugins {
+    id "java"
+}
+apply plugin: "com.google.protobuf"
+
+repositories {
+    mavenCentral()
+}
+
+protobuf {
+    protoc {
+        artifact = "com.google.protobuf:protoc:${protobufJavaVersion}"
+    }
+}
+
+sourceCompatibility = JavaVersion.VERSION_1_8
+targetCompatibility = JavaVersion.VERSION_1_8
+
+dependencies {
+    compile "com.google.protobuf:protobuf-java:${protobufJavaVersion}"
+}
+
+
+jar {
+    manifest {
+        attributes(
+                "Archiver-Version": "Gradle ${gradle.gradleVersion}",
+                "Created-By": "Gradle",
+                "Built-By": System.getProperty('user.name'),
+                "Built-Jdk": System.getProperty('java.version'),
+                "Component-Id": project.name,
+                "Component-Version": version,
+        )
+    }
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '4.1'
+}
+
