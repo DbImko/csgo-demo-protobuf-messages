@@ -13,6 +13,8 @@ plugins {
     id "com.jfrog.bintray" version "1.7.3"
 }
 apply plugin: "com.google.protobuf"
+apply plugin: com.github.dbimko.gradle.VersionPlugin
+apply plugin: com.github.dbimko.gradle.JavaPlugin
 
 repositories {
     mavenCentral()
