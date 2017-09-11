@@ -9,6 +9,7 @@ buildscript {
 
 plugins {
     id "java"
+    id "com.jfrog.bintray" version "1.7.3"
 }
 apply plugin: "com.google.protobuf"
 
@@ -40,6 +41,34 @@ jar {
                 "Component-Id": project.name,
                 "Component-Version": version,
         )
+    }
+}
+
+
+publishing {
+    publications {
+        maven(MavenPublication) {
+            from(components.java)
+            artifact(sourcesJar)
+            artifact(javadocJar)
+        }
+    }
+}
+
+bintray {
+    user = System.getenv('bintray_user')
+    key = System.getenv('bintray_api_key')
+    publish = true
+    pkg {
+        publications = ['maven']
+        repo = 'maven'
+        userOrg = 'dbimko'
+        name = project.name
+        desc = project.description
+        websiteUrl = 'https://github.com/DbImko/csgo-demo-protobuf-messages'
+        vcsUrl = 'https://github.com/DbImko/csgo-demo-protobuf-messages'
+        licenses = ['Apache-2.0']
+        publicDownloadNumbers = true
     }
 }
 
