@@ -29,6 +29,7 @@
 syntax = "proto2";
 // We care more about speed than code size
 option optimize_for = SPEED;
+option java_package = "com.github.valvesoftware";
 
 // We don't use the service generation functionality
 option cc_generic_services = false;

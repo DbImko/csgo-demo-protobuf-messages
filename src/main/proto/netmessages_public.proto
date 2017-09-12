@@ -43,6 +43,7 @@ syntax = "proto2";
 
 // Commenting this out allows it to be compiled for SPEED or LITE_RUNTIME.
 // option optimize_for = SPEED;
+option java_package = "com.github.valvesoftware";
 
 // We don't use the service generation functionality
 option cc_generic_services = false;
