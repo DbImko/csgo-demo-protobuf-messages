@@ -34,20 +34,6 @@ dependencies {
 }
 
 
-jar {
-    manifest {
-        attributes(
-                "Archiver-Version": "Gradle ${gradle.gradleVersion}",
-                "Created-By": "Gradle",
-                "Built-By": System.getProperty('user.name'),
-                "Built-Jdk": System.getProperty('java.version'),
-                "Component-Id": project.name,
-                "Component-Version": version,
-        )
-    }
-}
-
-
 publishing {
     publications {
         maven(MavenPublication) {
